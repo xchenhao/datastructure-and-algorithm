@@ -21,6 +21,20 @@ public class Fibonacci {
                 System.out.println(method2(n));
             }
         });
+
+        TimeTool.check("method3", new TimeTool.Task() {
+            @Override
+            public void execute() {
+                System.out.println(method3(n));
+            }
+        });
+
+        TimeTool.check("method4", new TimeTool.Task() {
+            @Override
+            public void execute() {
+                System.out.println(method4(n));
+            }
+        });
     }
 
     public static int method1(int n) {
@@ -43,5 +57,27 @@ public class Fibonacci {
             second = sum;
         }
         return second;
+    }
+
+    // method2 的优化版
+    public static int method3(int n) {
+        if (n <= 1) {
+            return n;
+        }
+
+        int first = 0;
+        int second = 1;
+        while (n-- > 1) {
+            second += first;
+            first = second - first;
+        }
+
+        return second;
+    }
+
+    // 其它方法：线性代数解法（特征方程）
+    public static int method4(int n) {
+        double c = Math.sqrt(5);
+        return (int)((Math.pow((1+c)/2, n) - Math.pow((1-c)/2, n))/c);
     }
 }
