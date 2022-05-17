@@ -5,13 +5,11 @@ package com.demo;
  * @link https://juejin.cn/post/6844904021778513933
  */
 @SuppressWarnings("unchecked")
-public class ArrayList<E> {
-    private int size;
+public class ArrayList<E> extends AbstractList<E> {
     private E[] elements;
 
     // 设置 elements 数组默认的初始化空间
     private static final int CAPACITY_DEFAULT = 10;
-    private static final int ELEMENT_NOT_FOUND = -1;
 
     public ArrayList(int capacity) {
         capacity = Math.max(capacity, CAPACITY_DEFAULT);
@@ -39,51 +37,14 @@ public class ArrayList<E> {
         elements = newElements;
     }
 
-    private void outOfBounds(int index) {
-        throw new IndexOutOfBoundsException("Index:" + index + ", Size:" + size);
-    }
-
-    private void rangeCheckForAdd(int index) {
-        if (index < 0 || index > size) {
-            outOfBounds(index);
-        }
-    }
-
-    private void rangeCheck(int index) {
-        if (index < 0 || index >= size) {
-            outOfBounds(index);
-        }
-    }
-
-    // 元素的数量
-    int size() {
-        return size;
-    }
-
-    // 是否为空
-    boolean isEmpty() {
-        return size == 0;
-    }
-
-    // 是否包含某个元素
-    boolean contains(E element) {
-        // 查看元素的索引是否为ELEMENT_ON_FOUND即可
-        return indexOf(element) != ELEMENT_NOT_FOUND;
-    }
-
-    // 添加元素到最后面
-    void add(E element) {
-        add(size, element);
-    }
-
     // 返回index位置对应的元素
-    E get(int index) {
+    public E get(int index) {
         rangeCheck(index);
         return elements[index];
     }
 
     // 设置index位置的元素
-    E set(int index, E element) {
+    public E set(int index, E element) {
         // 判断索引是否越界
         rangeCheck(index);
         // 取出被替换元素
@@ -95,7 +56,7 @@ public class ArrayList<E> {
     }
 
     // 往index位置添加元素
-    void add(int index, E element) {
+    public void add(int index, E element) {
         //判断越界
         rangeCheckForAdd(index);
         //判断扩容
@@ -128,7 +89,7 @@ public class ArrayList<E> {
 
 
     // 查看元素的位置
-    int indexOf(E element) {
+   public int indexOf(E element) {
         if (element == null) {
             for (int i = 0; i < size; i++) {
                 if (elements[i] == null) return i;
@@ -142,7 +103,7 @@ public class ArrayList<E> {
     }
 
     // 清除所有元素
-    void clear() {
+    public void clear() {
         // 清空存储的数据
         for (int i = 0; i < size; i++) {
             elements[i] = null;

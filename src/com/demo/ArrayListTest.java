@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class ArrayListTest {
 
-    public static class Person {
+    private static class Person {
 
         private int age;
         private String name;
@@ -25,7 +25,7 @@ public class ArrayListTest {
 
     @Test
     public void test() throws Exception {
-        ArrayList<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
         list.add(100);
         list.add(20);
         list.add(50);
@@ -41,7 +41,7 @@ public class ArrayListTest {
 
     @Test
     public void test2() {
-        ArrayList<Person> list = new ArrayList<>();
+        List<Person> list = new ArrayList<>();
 
         list.add(new Person(30, "Jack"));
         list.add(new Person(60, "Tom"));
