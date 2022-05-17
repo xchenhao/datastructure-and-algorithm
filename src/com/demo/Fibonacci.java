@@ -1,41 +1,6 @@
 package com.demo;
 
-import org.junit.Test;
-
 public class Fibonacci {
-
-    @Test
-    public void test() {
-        int n = 45;
-
-        TimeTool.check("method1", new TimeTool.Task() {
-            @Override
-            public void execute() {
-                System.out.println(method1(n));
-            }
-        });
-
-        TimeTool.check("method2", new TimeTool.Task() {
-            @Override
-            public void execute() {
-                System.out.println(method2(n));
-            }
-        });
-
-        TimeTool.check("method3", new TimeTool.Task() {
-            @Override
-            public void execute() {
-                System.out.println(method3(n));
-            }
-        });
-
-        TimeTool.check("method4", new TimeTool.Task() {
-            @Override
-            public void execute() {
-                System.out.println(method4(n));
-            }
-        });
-    }
 
     public static int method1(int n) {
         if (n <= 1) {
