@@ -20,3 +20,6 @@
     + `com.demo.Stack` 继承
     + `com.demo.Stack2` 组合
     + 应用：浏览器的前进和后退/软件的撤销和恢复/有效的括号
+  + 队列
+    + `com.demo.Queue`
+    + 应用：用两个栈实现队列
