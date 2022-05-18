@@ -14,7 +14,7 @@
     + 单向循环链表：`com.demo.CircleSingleDirectionLinkedList`
     + 双向循环链表：
       * `com.demo.CircleDoubleDirectionLinkedList`
-      * 约瑟夫问题
+      * 应用：约瑟夫问题
     + 静态链表（仅做了解）
   + 栈
     + `com.demo.Stack` 继承
