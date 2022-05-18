@@ -23,3 +23,4 @@
   + 队列
     + `com.demo.Queue`
     + 应用：用两个栈实现队列
+  + 双端队列：`com.demo.Deque`
