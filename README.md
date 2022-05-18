@@ -22,6 +22,7 @@
     + 应用：浏览器的前进和后退/软件的撤销和恢复/有效的括号
   + 队列
     + `com.demo.Queue`
-    + 应用：用两个栈实现队列
-  + 双端队列：`com.demo.Deque`
-  + 循环队列：`com.demo.CircleSingleQueue`
+      * 应用：用两个栈实现队列
+    + 双端队列：`com.demo.Deque`
+    + 循环队列：`com.demo.CircleQueue`
+    + 循环双端队列：`com.demo.CircleDeque`

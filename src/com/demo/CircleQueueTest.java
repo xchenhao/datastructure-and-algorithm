@@ -2,11 +2,11 @@ package com.demo;
 
 import org.junit.Test;
 
-public class CircleSingleQueueTest {
+public class CircleQueueTest {
 
     @Test
     public void test() {
-        CircleSingleQueue<Object> queue = new CircleSingleQueue<>();
+        CircleQueue<Object> queue = new CircleQueue<>();
         for (int i = 0; i < 10; i++) {
             queue.enQueue(i);
         }

@@ -1,14 +1,14 @@
 package com.demo;
 
 @SuppressWarnings("unchecked")
-public class CircleSingleQueue<E> {
+public class CircleQueue<E> {
     private int frontIndex;
     private int size;
     private E[] elements;
 
     private static final int DEFAULT_CAPACITY = 10;
 
-     public CircleSingleQueue() {
+     public CircleQueue() {
          elements = (E[]) new Object[DEFAULT_CAPACITY];
      }
 
@@ -77,5 +77,13 @@ public class CircleSingleQueue<E> {
 
     private int index(int index) {
          return (frontIndex + index) % elements.length;
+    }
+
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            elements[index(i)] = null;
+        }
+        frontIndex = 0;
+        size = 0;
     }
 }

@@ -35,4 +35,8 @@ public class Deque<E> {
     public E rear() {
         return list.get(list.size() - 1);
     }
+
+    public void clear() {
+        list.clear();
+    }
 }

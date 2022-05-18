@@ -23,4 +23,7 @@ public class Queue<E> {
         return list.get(0);
     }
 
+    public void clear() {
+        list.clear();
+    }
 }
