@@ -34,4 +34,19 @@ public class CircleDoubleDirectionLinkedListTest {
         System.out.println(list);
     }
 
+    @Test
+    public void JosephusProblem() {
+        CircleDoubleDirectionLinkedList<Integer> list = new CircleDoubleDirectionLinkedList<>();
+        for (int i = 1; i <= 8; i++) {
+            list.add(i);
+        }
+        list.reset();  // 指向头节点
+
+        while (!list.isEmpty()) {
+            list.next();
+            list.next();
+            System.out.println(list.remove());
+        }
+    }
+
 }
