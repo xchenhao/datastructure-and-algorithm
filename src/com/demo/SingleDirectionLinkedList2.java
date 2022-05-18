@@ -4,10 +4,10 @@ package com.demo;
  * 增加一个虚拟头节点
  * @param <E>
  */
-public class LinkedList2<E> extends AbstractList<E> {
+public class SingleDirectionLinkedList2<E> extends AbstractList<E> {
     private Node<E> first;
 
-    public LinkedList2() {
+    public SingleDirectionLinkedList2() {
         first = new Node<>(null, null);
     }
 

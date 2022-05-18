@@ -1,21 +1,46 @@
 package com.demo;
 
 /**
- * @link https://juejin.cn/post/6844904023208771591
+ * @link https://juejin.cn/post/6844904023393304590
  * @link https://visualgo.net/zh
  * @param <E>
  */
-public class LinkedList<E> extends AbstractList<E> {
+public class DoubleDirectionLinkedList<E> extends AbstractList<E> {
     private Node<E> first;
+    private Node<E> last;
 
     // 私有类, 链表中的节点
     private static class Node<E> {
         E element;
+
+        Node<E> prev;
         Node<E> next;
+
         // 构造方法
-        public Node(E element, Node<E> next) {
+        public Node(Node<E> prev, E element, Node<E> next) {
             this.element = element;
+            this.prev = prev;
             this.next = next;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            if (prev != null) {
+                sb.append(prev.element);
+            } else {
+                sb.append("null");
+            }
+
+            sb.append("_").append(element).append("_");
+
+            if (next != null) {
+                sb.append(next.element);
+            } else {
+                sb.append("null");
+            }
+
+            return sb.toString();
         }
     }
 
@@ -23,16 +48,23 @@ public class LinkedList<E> extends AbstractList<E> {
         //越界判断
         rangeCheck(index);
 
-        Node<E> node = first;
-        for (int i = 0; i < index; i++) {
-            node = node.next;
+        if (index < (size >> 1)) {
+            Node<E> node = first;
+            for (int i = 0; i < index; i++) {
+                node = node.next;
+            }
+
+            return node;
+        } else {
+            Node<E> node = last;
+            for (int i = size - 1; i > index; i--) {
+                node = node.prev;
+            }
+
+            return node;
         }
-        return node;
     }
 
-    // 最好 O(1)
-    // 最坏 O(n)
-    // 平均 O(n)
     // 返回index位置对应的元素
     public E get(int index) {
         // node方法中已经判断了索引是否越界
@@ -51,50 +83,67 @@ public class LinkedList<E> extends AbstractList<E> {
         return old;
     }
 
-    // 最好 O(1)
-    // 最坏 O(n)
-    // 平均 O(n)
     // 往index位置添加元素
     public void add(int index, E element) {
         // 检查索引是否越界
         rangeCheckForAdd(index);
-        // 当插入到0的位置时
-        if (index == 0) {
-            // 将first指向新节点, 新节点的next指向first之前指向的节点
-            first = new Node<E>(element, first);
-        }else {
-            // 找到指定位置前面的节点
-            Node<E> prev = node(index - 1);
-            // 将前面节点的next指向新节点, 新节点的next指向prev之前指向的节点
-            prev.next = new Node<>(element, prev.next);
+
+        if (index == size) {  // 往最后添加元素
+            Node<E> oldLast = last;
+            last = new Node<>(oldLast, element, null);
+            if (oldLast == null) {
+                // 链表添加的第 1 个元素
+                first = last;
+            } else {
+                oldLast.next = last;
+            }
+        } else {
+            Node<E> next = node(index);
+            Node<E> pre = next.prev;
+            Node<E> node = new Node<>(pre, element, next);
+
+            next.prev = node;
+
+            // index == 0
+            if (pre == null) {
+                first = node;
+            } else {
+                pre.next = node;
+            }
         }
+
+
+
+
+
         size++;
     }
 
-    // 最好 O(1)
-    // 最坏 O(n)
-    // 平均 O(n)
     // 删除index位置对应的元素
     public E remove(int index) {
         // 检查索引是否越界
         rangeCheck(index);
-        // 记录需要删除的节点
-        Node<E> old = first;
-        // 当删除第0个元素时, 将first的next指向索引为`1`的节点即可
-        if (index == 0) {
-            first = first.next;
-        }else {
-            // 找到前一个元素
-            Node<E> prev = node(index - 1);
-            // 记录需要删除的节点
-            old = prev.next;
-            // 将prev的next指向需要删除节点的后一个节点
-            prev.next = old.next;
+
+        Node<E> node = node(index);
+        Node<E> prev = node.prev;
+        Node<E> next = node.next;
+
+        // index == 0
+        if (prev == null) {
+            first = next;
+        } else {
+            prev.next = next;
         }
-        // size-1
+
+        // index == size - 1
+        if (next == null) {
+            last = prev;
+        } else {
+            next.prev = prev;
+        }
+
         size--;
-        // 返回删除的元素
-        return old.element;
+        return node.element;
     }
 
     public int indexOf(E element) {
@@ -120,8 +169,11 @@ public class LinkedList<E> extends AbstractList<E> {
 
     // 清除所有元素
     public void clear() {
-        first = null;
         size = 0;
+        first = null;
+        last = null;
+        // gc root 对象
+        // 1 被栈指针（局部变量）指向的对象
     }
 
     public String toString() {
@@ -130,9 +182,9 @@ public class LinkedList<E> extends AbstractList<E> {
         Node<E> node = first;
         for (int i = 0; i < size; i++) {
             if (i != 0) {
-                string.append(",");
+                string.append(", ");
             }
-            string.append(node.element);
+            string.append(node);
             node = node.next;
         }
         string.append("]");
