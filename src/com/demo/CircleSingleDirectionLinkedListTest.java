@@ -3,11 +3,11 @@ package com.demo;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class DoubleDirectionLinkedListTest {
+public class CircleSingleDirectionLinkedListTest {
 
     @Test
     public void test() {
-        DoubleDirectionLinkedList<Integer> list = new DoubleDirectionLinkedList<>();
+        CircleSingleDirectionLinkedList<Integer> list = new CircleSingleDirectionLinkedList<>();
 
         list.add(11);
         list.add(22);
@@ -22,6 +22,8 @@ public class DoubleDirectionLinkedListTest {
         list.remove(2); // 11 66 33 44 77
         list.remove(list.size()-1);  // 11 66 33 44
 
+        System.out.println(list);
+
         Assert.assertEquals(3, list.indexOf(44));
         Assert.assertEquals(List.ELEMENT_NOT_FOUND, list.indexOf(22));
         Assert.assertTrue(list.contains(33));
@@ -31,5 +33,4 @@ public class DoubleDirectionLinkedListTest {
 
         System.out.println(list);
     }
-
 }
