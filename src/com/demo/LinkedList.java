@@ -30,6 +30,9 @@ public class LinkedList<E> extends AbstractList<E> {
         return node;
     }
 
+    // 最好 O(1)
+    // 最坏 O(n)
+    // 平均 O(n)
     // 返回index位置对应的元素
     public E get(int index) {
         // node方法中已经判断了索引是否越界
@@ -48,6 +51,9 @@ public class LinkedList<E> extends AbstractList<E> {
         return old;
     }
 
+    // 最好 O(1)
+    // 最坏 O(n)
+    // 平均 O(n)
     // 往index位置添加元素
     public void add(int index, E element) {
         // 检查索引是否越界
@@ -65,6 +71,9 @@ public class LinkedList<E> extends AbstractList<E> {
         size++;
     }
 
+    // 最好 O(1)
+    // 最坏 O(n)
+    // 平均 O(n)
     // 删除index位置对应的元素
     public E remove(int index) {
         // 检查索引是否越界

@@ -37,12 +37,14 @@ public class ArrayList<E> extends AbstractList<E> {
         elements = newElements;
     }
 
+    // O(1)
     // 返回index位置对应的元素
     public E get(int index) {
         rangeCheck(index);
         return elements[index];
     }
 
+    // O(1)
     // 设置index位置的元素
     public E set(int index, E element) {
         // 判断索引是否越界
@@ -55,6 +57,9 @@ public class ArrayList<E> extends AbstractList<E> {
         return oldElement;
     }
 
+    // 最好 O(1)
+    // 最坏 O(n)
+    // 平均 O(n/2)->O(n)
     // 往index位置添加元素
     public void add(int index, E element) {
         //判断越界
@@ -69,6 +74,15 @@ public class ArrayList<E> extends AbstractList<E> {
         size++;
     }
 
+    // 最好 O(1)
+    // 最坏 O(n)
+    // 平均 O(1)
+    // 均摊复杂度 O(1)
+    // add(E element)
+
+    // 最好 O(1)
+    // 最坏 O(n)
+    // 平均 O(n)
     // 删除index位置对应的元素
     public E remove(int index) {
         // 判断索引是否越界
@@ -112,6 +126,7 @@ public class ArrayList<E> extends AbstractList<E> {
         size = 0;
     }
 
+    // 缩容
     public void trim() {
         // 获取当前数组的容量
         int capacity = elements.length;
