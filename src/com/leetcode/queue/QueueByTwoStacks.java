@@ -1,6 +1,6 @@
 package com.leetcode.queue;
 
-import com.demo.Stack2;
+import datastructure.linear.Stack2;
 import org.junit.Test;
 
 // 用两个栈实现队列

@@ -1,4 +1,4 @@
-package com.demo;
+package datastructure.linear;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.demo;
+package datastructure.linear;
 
 public class Deque<E> {
     private List<E> list = new DoubleDirectionLinkedList<>();

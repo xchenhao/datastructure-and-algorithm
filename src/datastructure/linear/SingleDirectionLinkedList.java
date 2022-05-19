@@ -1,15 +1,12 @@
-package com.demo;
+package datastructure.linear;
 
 /**
- * 增加一个虚拟头节点
+ * @link https://juejin.cn/post/6844904023208771591
+ * @link https://visualgo.net/zh
  * @param <E>
  */
-public class SingleDirectionLinkedList2<E> extends AbstractList<E> {
+public class SingleDirectionLinkedList<E> extends AbstractList<E> {
     private Node<E> first;
-
-    public SingleDirectionLinkedList2() {
-        first = new Node<>(null, null);
-    }
 
     // 私有类, 链表中的节点
     private static class Node<E> {
@@ -26,13 +23,16 @@ public class SingleDirectionLinkedList2<E> extends AbstractList<E> {
         //越界判断
         rangeCheck(index);
 
-        Node<E> node = first.next;
+        Node<E> node = first;
         for (int i = 0; i < index; i++) {
             node = node.next;
         }
         return node;
     }
 
+    // 最好 O(1)
+    // 最坏 O(n)
+    // 平均 O(n)
     // 返回index位置对应的元素
     public E get(int index) {
         // node方法中已经判断了索引是否越界
@@ -51,31 +51,47 @@ public class SingleDirectionLinkedList2<E> extends AbstractList<E> {
         return old;
     }
 
+    // 最好 O(1)
+    // 最坏 O(n)
+    // 平均 O(n)
     // 往index位置添加元素
     public void add(int index, E element) {
         // 检查索引是否越界
         rangeCheckForAdd(index);
         // 当插入到0的位置时
-
-        // 找到指定位置前面的节点
-        Node<E> prev =index == 0 ? first : node(index - 1);
-        // 将前面节点的next指向新节点, 新节点的next指向prev之前指向的节点
-        prev.next = new Node<>(element, prev.next);
+        if (index == 0) {
+            // 将first指向新节点, 新节点的next指向first之前指向的节点
+            first = new Node<E>(element, first);
+        }else {
+            // 找到指定位置前面的节点
+            Node<E> prev = node(index - 1);
+            // 将前面节点的next指向新节点, 新节点的next指向prev之前指向的节点
+            prev.next = new Node<>(element, prev.next);
+        }
         size++;
     }
 
+    // 最好 O(1)
+    // 最坏 O(n)
+    // 平均 O(n)
     // 删除index位置对应的元素
     public E remove(int index) {
         // 检查索引是否越界
         rangeCheck(index);
-
-        // 找到前一个元素
-        Node<E> prev = index == 0 ? first : node(index - 1);
         // 记录需要删除的节点
-        Node<E> old = prev.next;
-        // 将prev的next指向需要删除节点的后一个节点
-        prev.next = old.next;
-
+        Node<E> old = first;
+        // 当删除第0个元素时, 将first的next指向索引为`1`的节点即可
+        if (index == 0) {
+            first = first.next;
+        }else {
+            // 找到前一个元素
+            Node<E> prev = node(index - 1);
+            // 记录需要删除的节点
+            old = prev.next;
+            // 将prev的next指向需要删除节点的后一个节点
+            prev.next = old.next;
+        }
+        // size-1
         size--;
         // 返回删除的元素
         return old.element;
@@ -111,7 +127,7 @@ public class SingleDirectionLinkedList2<E> extends AbstractList<E> {
     public String toString() {
         StringBuilder string = new StringBuilder();
         string.append("size = ").append(size).append(", [");
-        Node<E> node = first.next;
+        Node<E> node = first;
         for (int i = 0; i < size; i++) {
             if (i != 0) {
                 string.append(",");

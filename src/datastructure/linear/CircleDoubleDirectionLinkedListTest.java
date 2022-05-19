@@ -1,13 +1,13 @@
-package com.demo;
+package datastructure.linear;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class DoubleDirectionLinkedListTest {
+public class CircleDoubleDirectionLinkedListTest {
 
     @Test
     public void test() {
-        DoubleDirectionLinkedList<Integer> list = new DoubleDirectionLinkedList<>();
+        CircleDoubleDirectionLinkedList<Integer> list = new CircleDoubleDirectionLinkedList<>();
 
         list.add(11);
         list.add(22);
@@ -22,6 +22,8 @@ public class DoubleDirectionLinkedListTest {
         list.remove(2); // 11 66 33 44 77
         list.remove(list.size()-1);  // 11 66 33 44
 
+        System.out.println(list);
+
         Assert.assertEquals(3, list.indexOf(44));
         Assert.assertEquals(List.ELEMENT_NOT_FOUND, list.indexOf(22));
         Assert.assertTrue(list.contains(33));
@@ -30,6 +32,21 @@ public class DoubleDirectionLinkedListTest {
         Assert.assertEquals(44, (long)list.get(list.size() - 1));
 
         System.out.println(list);
+    }
+
+    @Test
+    public void JosephusProblem() {
+        CircleDoubleDirectionLinkedList<Integer> list = new CircleDoubleDirectionLinkedList<>();
+        for (int i = 1; i <= 8; i++) {
+            list.add(i);
+        }
+        list.reset();  // 指向头节点
+
+        while (!list.isEmpty()) {
+            list.next();
+            list.next();
+            System.out.println(list.remove());
+        }
     }
 
 }

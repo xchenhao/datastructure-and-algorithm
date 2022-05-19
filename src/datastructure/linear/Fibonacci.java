@@ -1,4 +1,4 @@
-package com.demo;
+package datastructure.linear;
 
 public class Fibonacci {
 

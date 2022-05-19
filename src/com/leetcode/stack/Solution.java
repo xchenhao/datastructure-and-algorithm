@@ -1,6 +1,6 @@
 package com.leetcode.stack;
 
-import com.demo.Stack2;
+import datastructure.linear.Stack2;
 import org.junit.Test;
 
 import java.util.HashMap;

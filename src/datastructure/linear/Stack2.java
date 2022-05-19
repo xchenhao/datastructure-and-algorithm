@@ -1,4 +1,4 @@
-package com.demo;
+package datastructure.linear;
 
 public class Stack2<E> {
     // 使用组合：动态数组存储数组

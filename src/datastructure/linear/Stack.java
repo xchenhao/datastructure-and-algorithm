@@ -1,4 +1,4 @@
-package com.demo;
+package datastructure.linear;
 
 // 直接继承把父类的所有方法继承下来，会被外面方法，不合理
 public class Stack<E> extends ArrayList<E> {

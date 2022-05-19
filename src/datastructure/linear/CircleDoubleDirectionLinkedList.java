@@ -1,13 +1,65 @@
-package com.demo;
+package datastructure.linear;
 
 /**
  * @link https://juejin.cn/post/6844904023393304590
  * @link https://visualgo.net/zh
  * @param <E>
  */
-public class DoubleDirectionLinkedList<E> extends AbstractList<E> {
+public class CircleDoubleDirectionLinkedList<E> extends AbstractList<E> {
     private Node<E> first;
     private Node<E> last;
+
+    private Node<E> current;
+    public void reset() {
+        current = first;
+    }
+    public E next() {
+        if (current == null) {
+            return null;
+        }
+        current = current.next;
+        return current.element;
+    }
+    public E remove() {
+        if (current == null) {
+            return null;
+        }
+
+        Node<E> next = current.next;
+        E element = remove(current);
+        if (size == 0) {
+            current = null;
+        } else {
+            current = next;
+        }
+
+        return element;
+    }
+
+    private E remove(Node<E> node) {
+        if (size == 1) {
+            first = null;
+            last = null;
+        } else {
+            Node<E> prev = node.prev;
+            Node<E> next = node.next;
+
+            prev.next = next;
+            next.prev = prev;
+
+            // 或 index == 0
+            if (node == first) {
+                first = next;
+            }
+            // 或 index == size - 1
+            if (node == last) {
+                last = prev;
+            }
+        }
+
+        size--;
+        return node.element;
+    }
 
     // 私有类, 链表中的节点
     private static class Node<E> {
@@ -90,12 +142,15 @@ public class DoubleDirectionLinkedList<E> extends AbstractList<E> {
 
         if (index == size) {  // 往最后添加元素
             Node<E> oldLast = last;
-            last = new Node<>(oldLast, element, null);
+            last = new Node<>(oldLast, element, first);
             if (oldLast == null) {
                 // 链表添加的第 1 个元素
                 first = last;
+                first.next = first;
+                first.prev = first;
             } else {
                 oldLast.next = last;
+                first.prev = last;
             }
         } else {
             Node<E> next = node(index);
@@ -103,47 +158,20 @@ public class DoubleDirectionLinkedList<E> extends AbstractList<E> {
             Node<E> node = new Node<>(pre, element, next);
 
             next.prev = node;
+            pre.next = node;
 
-            // index == 0
-            if (pre == null) {
+            // 或 index == 0
+            if (next == first) {
                 first = node;
-            } else {
-                pre.next = node;
             }
         }
-
-
-
-
 
         size++;
     }
 
-    // 删除index位置对应的元素
     public E remove(int index) {
-        // 检查索引是否越界
         rangeCheck(index);
-
-        Node<E> node = node(index);
-        Node<E> prev = node.prev;
-        Node<E> next = node.next;
-
-        // index == 0
-        if (prev == null) {
-            first = next;
-        } else {
-            prev.next = next;
-        }
-
-        // index == size - 1
-        if (next == null) {
-            last = prev;
-        } else {
-            next.prev = prev;
-        }
-
-        size--;
-        return node.element;
+        return remove(node(index));
     }
 
     public int indexOf(E element) {

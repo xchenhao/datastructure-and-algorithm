@@ -1,4 +1,4 @@
-package com.demo;
+package datastructure.linear;
 
 @SuppressWarnings("unchecked")
 public class CircleDeque<E> {

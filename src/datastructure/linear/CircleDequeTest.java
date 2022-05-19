@@ -1,4 +1,4 @@
-package com.demo;
+package datastructure.linear;
 
 import org.junit.Test;
 

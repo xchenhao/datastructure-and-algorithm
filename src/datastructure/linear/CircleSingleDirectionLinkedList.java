@@ -1,4 +1,4 @@
-package com.demo;
+package datastructure.linear;
 
 /**
  * @link https://juejin.cn/post/6844904023921786894
