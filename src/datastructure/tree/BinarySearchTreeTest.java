@@ -217,4 +217,32 @@ public class BinarySearchTreeTest {
         System.out.println(bst4.isComplete());
     }
 
+    @Test
+    public void test8() {
+        BinarySearchTree<Integer> bst4 = new BinarySearchTree<>();
+        // 如果想构建出一棵二叉搜索树，则按照层序遍历的顺序构建
+        Integer data[] = new Integer[] {
+                7, 4, 9, 2, 5, 8, 11, 3, 12, 1,
+        };
+        for (int i = 0; i < data.length; i++) {
+            bst4.add(data[i]);
+        }
+        BinaryTrees.println(bst4);
+
+//        bst4.remove(1);
+//        bst4.remove(3);
+//        bst4.remove(12);
+
+//        bst4.remove(5);
+
+//        bst4.remove(11);
+
+//        bst4.remove(9);
+
+        bst4.remove(7);
+
+//        BinaryTrees.println(bst4);
+        String str = BinaryTrees.printString(bst4);
+        Files.writeToFile("a.log", str);
+    }
 }
