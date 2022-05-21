@@ -2,6 +2,9 @@ package datastructure.tree;
 
 import com.tools.printer.BinaryTreeInfo;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 @SuppressWarnings("unchecked")
 public class BinarySearchTree<E> implements BinaryTreeInfo {
     private int size; // 元素的个数
@@ -222,31 +225,31 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         System.out.println(node.element);
     }
 
-//    public void levelOrderTranversal() {
-//        // 如果根节点为空，直接返回
-//        if (root == null) return;
-//        // 创建存储节点的队列
-//        Queue<Node<E>> queue = new LinkedList<>();
-//        //将头节点入队列
-//        queue.offer(root);
-//        //退出条件，当队列为空
-//        while (!queue.isEmpty()) {
-//            //取出队列头元素
-//            Node<E> node = queue.poll();
-//            //打印头元素
-//            System.out.println(node.element);
-//            //如果头元素左子树不为空
-//            if (node.left != null) {
-//                //将头元素左子树入队
-//                queue.offer(node.left);
-//            }
-//            //如果头元素右子树不为空
-//            if (node.right != null) {
-//                //将头元素右子树入队
-//                queue.offer(node.right);
-//            }
-//        }
-//    }
+    public void levelOrderTranversal() {
+        // 如果根节点为空，直接返回
+        if (root == null) return;
+        // 创建存储节点的队列
+        Queue<Node<E>> queue = new LinkedList<>();
+        //将头节点入队列
+        queue.offer(root);
+        //退出条件，当队列为空
+        while (!queue.isEmpty()) {
+            //取出队列头元素
+            Node<E> node = queue.poll();
+            //打印头元素
+            System.out.println(node.element);
+            //如果头元素左子树不为空
+            if (node.left != null) {
+                //将头元素左子树入队
+                queue.offer(node.left);
+            }
+            //如果头元素右子树不为空
+            if (node.right != null) {
+                //将头元素右子树入队
+                queue.offer(node.right);
+            }
+        }
+    }
 
     protected Node<E> predecessor(Node<E> node) {
         if (node == null) return null;

@@ -103,7 +103,9 @@ public class BinarySearchTreeTest {
         // bst4.inorderTraversal();
 
         // 后序遍历
-        bst4.postorderTraversal();
+        // bst4.postorderTraversal();
+
+        bst4.levelOrderTranversal();
     }
 
 }
