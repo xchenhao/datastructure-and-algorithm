@@ -156,4 +156,17 @@ public class BinarySearchTreeTest {
         System.out.println();
     }
 
+    @Test
+    public void test4() {
+        BinarySearchTree<Integer> bst4 = new BinarySearchTree<>();
+        Integer data[] = new Integer[] {
+                7, 4, 9, 2, 5, 8, 11, 3, 12, 1,
+        };
+        for (int i = 0; i < data.length; i++) {
+            bst4.add(data[i]);
+        }
+
+        System.out.println(bst4);
+    }
+
 }

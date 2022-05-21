@@ -351,4 +351,18 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         return node.parent;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        toString(root, sb, "");
+        return sb.toString();
+    }
+
+    private void toString(Node<E> node, StringBuilder sb, String prefix) {
+        if (node == null) return;
+
+        toString(node.left, sb, prefix + "L---");
+        sb.append(prefix).append(node.element).append("\n");
+        toString(node.right, sb, prefix + "R---");
+    }
 }
