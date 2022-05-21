@@ -204,4 +204,17 @@ public class BinarySearchTreeTest {
         System.out.println(bst5.height2());
     }
 
+    @Test
+    public void test7() {
+        BinarySearchTree<Integer> bst4 = new BinarySearchTree<>();
+        // 如果想构建出一棵二叉搜索树，则按照层序遍历的顺序构建
+        Integer data[] = new Integer[] {
+                7, 4, 9, 2, 5, 8, 11, 3, 12, 1,
+        };
+        for (int i = 0; i < data.length; i++) {
+            bst4.add(data[i]);
+        }
+        System.out.println(bst4.isComplete());
+    }
+
 }
