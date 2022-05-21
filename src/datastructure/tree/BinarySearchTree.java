@@ -171,6 +171,9 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         return false;
     }
 
+    public void preorderTraversal() {
+        preorderTraversal(root);
+    }
     // 递归实现前序遍历
     private void preorderTraversal(Node<E> node) {
         // 退出条件
@@ -178,7 +181,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         // 打印节点值
         System.out.println(node.element);
         // 前序遍历左子树
-//        reorderTraversal(node.left);
+        preorderTraversal(node.left);
         // 前序遍历右子树
         preorderTraversal(node.right);
     }

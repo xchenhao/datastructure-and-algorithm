@@ -82,4 +82,21 @@ public class BinarySearchTreeTest {
         String str = BinaryTrees.printString(bst4);
         Files.writeToFile("./a.log", str);
     }
+
+    // 前序遍历
+    @Test
+    public void test3() {
+        BinarySearchTree<Integer> bst4 = new BinarySearchTree<>();
+        Integer data[] = new Integer[] {
+                7, 4, 9, 2, 5, 8, 11, 3, 12, 1,
+        };
+        for (int i = 0; i < data.length; i++) {
+            bst4.add(data[i]);
+        }
+
+        String str = BinaryTrees.printString(bst4);
+        Files.writeToFile("./a.log", str);
+        bst4.preorderTraversal();
+    }
+
 }
