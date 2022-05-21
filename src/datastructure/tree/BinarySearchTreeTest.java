@@ -111,9 +111,13 @@ public class BinarySearchTreeTest {
         System.out.println("层序顺序");
         bst4.levelOrder(new BinarySearchTree.Visitor<Integer>() {
             @Override
-            public void visit(Integer element) {
+            public boolean visit(Integer element) {
                 // System.out.println(element);
                 System.out.print("_" + element + "_");
+                if (element == 2) {
+                    return true;
+                }
+                return false;
             }
         });
 
@@ -121,9 +125,10 @@ public class BinarySearchTreeTest {
         System.out.println("中序顺序");
         bst4.inOrder(new BinarySearchTree.Visitor<Integer>() {
             @Override
-            public void visit(Integer element) {
+            public boolean visit(Integer element) {
                 // System.out.println(element);
                 System.out.print("_" + element + "_");
+                return element == 4;
             }
         });
 
@@ -131,9 +136,10 @@ public class BinarySearchTreeTest {
         System.out.println("后序顺序");
         bst4.postOrder(new BinarySearchTree.Visitor<Integer>() {
             @Override
-            public void visit(Integer element) {
+            public boolean visit(Integer element) {
                 // System.out.println(element);
                 System.out.print("_" + element + "_");
+                return element == 5;
             }
         });
 
@@ -141,9 +147,10 @@ public class BinarySearchTreeTest {
         System.out.println("前序顺序");
         bst4.preOrder(new BinarySearchTree.Visitor<Integer>() {
             @Override
-            public void visit(Integer element) {
+            public boolean visit(Integer element) {
                 // System.out.println(element);
                 System.out.print("_" + element + "_");
+                return element == 1;
             }
         });
         System.out.println();
