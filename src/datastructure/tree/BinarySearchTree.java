@@ -49,6 +49,58 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         }
     }
 
+    public void inOrder(Visitor<E> visitor) {
+        inOrder(root, visitor);
+    }
+    private void inOrder(Node<E> node, Visitor<E> visitor) {
+        if (node == null || visitor == null) return;
+        inOrder(node.left, visitor);
+        visitor.visit(node.element);
+        inOrder(node.right, visitor);
+    }
+
+    public void postOrder(Visitor<E> visitor) {
+        postOrder(root, visitor);
+    }
+    private void postOrder(Node<E> node, Visitor<E> visitor) {
+        if (node == null || visitor == null) return;
+        postOrder(node.left, visitor);
+        postOrder(node.right, visitor);
+        visitor.visit(node.element);
+    }
+
+    public void preOrder(Visitor<E> visitor) {
+        preOrder(root, visitor);
+    }
+    private void preOrder(Node<E> node, Visitor<E> visitor) {
+        if (node == null || visitor == null) return;
+        visitor.visit(node.element);
+        preOrder(node.left, visitor);
+        preOrder(node.right, visitor);
+    }
+
+    public void levelOrder(Visitor<E> visitor) {
+        if (root == null || visitor == null) return;
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            Node<E> node = queue.poll();
+
+            visitor.visit(node.element);
+
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        }
+    }
+
+    public static interface Visitor<E> {
+        void visit(E element);
+    }
+
     private void elementNotNullCheck(E element) {
         if (element == null) {
             throw new IllegalArgumentException("element must not be null");

@@ -105,7 +105,48 @@ public class BinarySearchTreeTest {
         // 后序遍历
         // bst4.postorderTraversal();
 
-        bst4.levelOrderTranversal();
+        // 层序遍历
+        // bst4.levelOrderTranversal();
+
+        System.out.println("层序顺序");
+        bst4.levelOrder(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public void visit(Integer element) {
+                // System.out.println(element);
+                System.out.print("_" + element + "_");
+            }
+        });
+
+        System.out.println();
+        System.out.println("中序顺序");
+        bst4.inOrder(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public void visit(Integer element) {
+                // System.out.println(element);
+                System.out.print("_" + element + "_");
+            }
+        });
+
+        System.out.println();
+        System.out.println("后序顺序");
+        bst4.postOrder(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public void visit(Integer element) {
+                // System.out.println(element);
+                System.out.print("_" + element + "_");
+            }
+        });
+
+        System.out.println();
+        System.out.println("前序顺序");
+        bst4.preOrder(new BinarySearchTree.Visitor<Integer>() {
+            @Override
+            public void visit(Integer element) {
+                // System.out.println(element);
+                System.out.print("_" + element + "_");
+            }
+        });
+        System.out.println();
     }
 
 }
