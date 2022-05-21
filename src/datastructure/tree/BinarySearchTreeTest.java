@@ -169,4 +169,39 @@ public class BinarySearchTreeTest {
         System.out.println(bst4);
     }
 
+    @Test
+    public void test5() {
+        BinarySearchTree<Integer> bst4 = new BinarySearchTree<>();
+        Integer data[] = new Integer[] {
+                7, 4, 9, 2, 5, 8, 11, 3, 12, 1,
+        };
+        for (int i = 0; i < data.length; i++) {
+            bst4.add(data[i]);
+        }
+
+        System.out.println(bst4.height());
+    }
+
+    @Test
+    public void test6() {
+        BinarySearchTree<Integer> bst4 = new BinarySearchTree<>();
+        Integer data[] = new Integer[] {
+                7, 4, 9, 2, 5, 8, 11, 3, 12, 1,
+        };
+        for (int i = 0; i < data.length; i++) {
+            bst4.add(data[i]);
+        }
+
+        System.out.println(bst4.height2());
+
+
+        BinarySearchTree<Integer> bst5 = new BinarySearchTree<>();
+        for (int i = 0; i < 40; i++) {
+            bst5.add((int)(Math.random() * 100));
+        }
+        String str = BinaryTrees.printString(bst5);
+        Files.writeToFile("a.log", str);
+        System.out.println(bst5.height2());
+    }
+
 }

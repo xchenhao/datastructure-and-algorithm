@@ -365,4 +365,44 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         sb.append(prefix).append(node.element).append("\n");
         toString(node.right, sb, prefix + "R---");
     }
+
+    // 通过递归实现获取树的高度
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node<E> node) {
+        if (node == null) return 0;
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+
+    // 通过迭代（层序遍历）实现获取树的高度
+    public int height2() {
+        if (root == null) return 0;
+        int height = 0;  // 树的高度
+        int levelSize = 1;  // 存储着每一层的高度
+
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            Node<E> node = queue.poll();
+            levelSize--;
+
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+
+            if (levelSize == 0) {  // 意味着即将要访问下一层
+                levelSize = queue.size();
+                height++;
+            }
+        }
+
+        return height;
+    }
+
+
 }
