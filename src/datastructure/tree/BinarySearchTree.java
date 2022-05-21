@@ -5,6 +5,8 @@ import com.tools.printer.BinaryTreeInfo;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// https://github.com/
+
 @SuppressWarnings("unchecked")
 public class BinarySearchTree<E> implements BinaryTreeInfo {
     private int size; // 元素的个数
@@ -323,6 +325,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         }
     }
 
+    // 前驱节点
     protected Node<E> predecessor(Node<E> node) {
         if (node == null) return null;
         // 前驱节点在左子树当中（left.right.right.right....）
@@ -342,6 +345,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         return node.parent;
     }
 
+    // 后继节点
     protected Node<E> successor(Node<E> node) {
         if (node == null) return null;
         // 前驱节点在左子树当中（right.left.left.left....）
@@ -358,6 +362,9 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         }
         return node.parent;
     }
+
+    // 前驱节点：左子树的极右，祖父节点往右转的起点
+    // 后继节点：祖父节点往左转的起点，右子树的极左
 
     @Override
     public String toString() {
