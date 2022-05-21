@@ -186,6 +186,13 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         preorderTraversal(node.right);
     }
 
+    // 中序遍历
+    // 左子树->根节点->右子树：从小到大的顺序
+    // 右子树->根节点->左子树：从大到小的顺序
+    public void inorderTraversal() {
+        inorderTraversal(root);
+    }
+
     // 递归实现中序遍历
     private void inorderTraversal(Node<E> node) {
         // 退出条件
@@ -196,6 +203,11 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         System.out.println(node.element);
         // 中序遍历右子树
         inorderTraversal(node.right);
+    }
+
+    // 后序遍历：左子树、右子树，根节点
+    public void postorderTraversal() {
+        postorderTraversal(root);
     }
 
     // 递归实现后序遍历

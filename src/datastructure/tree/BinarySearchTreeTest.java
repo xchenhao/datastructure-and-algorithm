@@ -83,7 +83,7 @@ public class BinarySearchTreeTest {
         Files.writeToFile("./a.log", str);
     }
 
-    // 前序遍历
+
     @Test
     public void test3() {
         BinarySearchTree<Integer> bst4 = new BinarySearchTree<>();
@@ -96,7 +96,14 @@ public class BinarySearchTreeTest {
 
         String str = BinaryTrees.printString(bst4);
         Files.writeToFile("./a.log", str);
-        bst4.preorderTraversal();
+        // 前序遍历
+        // bst4.preorderTraversal();
+
+        // 中序遍历
+        // bst4.inorderTraversal();
+
+        // 后序遍历
+        bst4.postorderTraversal();
     }
 
 }
