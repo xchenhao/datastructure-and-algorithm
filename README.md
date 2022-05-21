@@ -1,5 +1,13 @@
 ## 数据结构与算法
 
+>参考
+>
+>https://github.com/rogertan30/Love-Leetcode
+>https://github.com/szluyu99/Data_Structure_Note
+>https://blog.csdn.net/weixin_43734095/article/details/104847976
+>https://blog.csdn.net/weixin_43734095/article/details/104598981
+
+---
 - 斐波那契数列：`datastructure.linear.Fibonacci`
 - 线性结构
   + 动态数组：`datastructure.linear.ArrayList`
