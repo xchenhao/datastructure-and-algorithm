@@ -41,8 +41,11 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
 
         // 添加第一个节点
         if (root == null) {
-            root = new Node<>(element, null);
+            root = createNode(element, null);
             size++;
+
+            // 新添加节点之后的处理
+            afterAdd(root);
             return;
         }
         // 添加的不是第一个节点
@@ -69,13 +72,24 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
         }
 
         // 看看插入到父节点的哪个位置
-        Node<E> newNode = new Node<>(element, parent);
+        Node<E> newNode = createNode(element, parent);
         if (cmp > 0) {
             parent.right = newNode;
         } else {
             parent.left = newNode;
         }
         size++;
+
+        // 新添加节点之后的处理
+        afterAdd(newNode);
+    }
+
+    /**
+     * 添加 node 之后的调整
+     * @param node 新添加的节点
+     */
+    protected void afterAdd(Node<E> node) {
+
     }
 
     private Node<E> node(E element) {

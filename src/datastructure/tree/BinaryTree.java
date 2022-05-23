@@ -52,6 +52,14 @@ public class BinaryTree<E> implements BinaryTreeInfo {
         public boolean hasTwoChildren() {
             return left != null && right != null;
         }
+
+        public boolean isLeftChild() {
+            return parent != null && this == parent.left;
+        }
+
+        public boolean isRightChild() {
+            return parent != null && this == parent.right;
+        }
     }
 
     public int size() {
@@ -167,6 +175,10 @@ public class BinaryTree<E> implements BinaryTreeInfo {
         }
 
         return height;
+    }
+
+    protected Node<E> createNode(E element, Node<E> parent) {
+        return new Node<>(element, parent);
     }
 
     // 判断是否是一棵完全二叉树
