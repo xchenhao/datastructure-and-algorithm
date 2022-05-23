@@ -107,6 +107,14 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
         return null;
     }
 
+    /**
+     * 删除 node 之后的调整
+     * @param node 被删除的节点
+     */
+    protected void afterRemove(Node<E> node) {
+
+    }
+
     public void remove(E element) {
         remove(node(element));
     }
@@ -140,14 +148,23 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
             } else { // node == node.parent.right
                 node.parent.right = replacement;
             }
+
+            // 删除节点之后的处理
+            afterRemove(node);
         } else if (node.parent == null) { // node是叶子节点并且是根节点
             root = null;
+
+            // 删除节点之后的处理
+            afterRemove(node);
         } else { // node是叶子节点，但不是根节点
             if (node == node.parent.left) {
                 node.parent.left = null;
             } else { // node == node.parent.right
                 node.parent.right = null;
             }
+
+            // 删除节点之后的处理
+            afterRemove(node);
         }
     }
 

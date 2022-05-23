@@ -12,6 +12,19 @@ public class AVLTree<E> extends BinarySearchTree<E> {
     }
 
     @Override
+    protected void afterRemove(Node<E> node) {
+        while ((node = node.parent) != null) {
+            if (isBalanced(node)) {
+                // 更新高度
+                updateHeight(node);
+            } else {
+                // 恢复平衡
+                rebalanceNew(node);
+            }
+        }
+    }
+
+    @Override
     protected void afterAdd(Node<E> node) {
         while ((node = node.parent) != null) {
             if (isBalanced(node)) {
@@ -54,6 +67,7 @@ public class AVLTree<E> extends BinarySearchTree<E> {
         }
     }
 
+    // 对于 AVL 树：a, g 可以不处理
     private void rotate(
             Node<E> r,  // 子树的根节点
             Node<E> a, Node<E> b, Node<E> c,
