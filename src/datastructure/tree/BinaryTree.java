@@ -25,9 +25,13 @@ public class BinaryTree<E> implements BinaryTreeInfo {
         return ((Node<E>)node).right;
     }
 
-    @Override
+//    @Override
+//    public Object string(Object node) {
+//        return ((Node<E>)node).element;
+//    }
+
     public Object string(Object node) {
-        return ((Node<E>)node).element;
+        return node;
     }
 
     protected static class Node<E> {
@@ -59,6 +63,18 @@ public class BinaryTree<E> implements BinaryTreeInfo {
 
         public boolean isRightChild() {
             return parent != null && this == parent.right;
+        }
+
+        // 获取兄弟节点
+        public Node<E> sibling() {
+            if (isLeftChild()) {
+                return parent.right;
+            }
+
+            if (isRightChild()) {
+                return parent.left;
+            }
+            return null;
         }
     }
 

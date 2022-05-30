@@ -49,7 +49,7 @@ public class AVLTreeTest {
     public void test3() {
         List<Integer> data = new ArrayList<>();
         for (int i = 0; i < 100_0000; i++) {
-            data.add((int)(Math.random() * 100_10000));
+            data.add((int)(Math.random() * 100_0000));
         }
 
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();

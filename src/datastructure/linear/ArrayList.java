@@ -30,7 +30,7 @@ public class ArrayList<E> extends AbstractList<E> {
         // 创建新数组
         E[] newElements = (E[]) new Object[newCapacity];
         // 原数组中的元素存储到新数组中
-        for (int i = 0; i < capacity; i++) {
+        for (int i = 0; i < oldCapacity; i++) {
             newElements[i] = elements[i];
         }
         // 引用新数组

@@ -39,4 +39,5 @@
     + 二叉搜索树：`datastructure.tree.BinarySearchTree`
       + 平衡二叉搜索树
         * AVL 树
-        * 红黑树
+        * 红黑树（平衡二叉 B 树）
+  + 多叉树：B 树
