@@ -114,6 +114,13 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
     protected void afterRemove(Node<E> node, Node<E> replacement) {
     }
 
+    /**
+     * 删除 node 之后的调整
+     * @param node 被删除的节点 或者用以取代被删除节点的子节点（当被删除节点的度为 1）
+     */
+    protected void afterRemove(Node<E> node) {
+    }
+
     public void remove(E element) {
         remove(node(element));
     }
@@ -149,12 +156,13 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
             }
 
             // 删除节点之后的处理
-            afterRemove(node, replacement);
+            // afterRemove(node, replacement);
+            afterRemove(replacement);
         } else if (node.parent == null) { // node是叶子节点并且是根节点
             root = null;
 
             // 删除节点之后的处理
-            afterRemove(node, null);
+            afterRemove(node);
         } else { // node是叶子节点，但不是根节点
             if (node == node.parent.left) {
                 node.parent.left = null;
@@ -163,7 +171,7 @@ public class BinarySearchTree<E> extends BinaryTree<E> {
             }
 
             // 删除节点之后的处理
-            afterRemove(node, null);
+            afterRemove(node);
         }
     }
 

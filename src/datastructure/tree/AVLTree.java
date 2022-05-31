@@ -11,7 +11,7 @@ public class AVLTree<E> extends BalancedBinarySearchTree<E> {
     }
 
     @Override
-    protected void afterRemove(Node<E> node, Node<E> replacement) {
+    protected void afterRemove(Node<E> node) {
         while ((node = node.parent) != null) {
             if (isBalanced(node)) {
                 // 更新高度
