@@ -152,7 +152,7 @@ public class BinaryTree<E> implements BinaryTreeInfo {
      */
     public static abstract class Visitor<E> {
         boolean stop;
-        abstract boolean visit(E element);
+        public abstract boolean visit(E element);
     }
 
     // 通过递归实现获取树的高度
