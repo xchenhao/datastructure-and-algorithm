@@ -49,3 +49,4 @@
   + `datastructure.map.TreeMap`
   + `datastructure.map.TreeSet`
 - 哈希表：`datastructure.hashmap.HashMap`、`datastructure.hashmap.LinkedHashMap`
+- 堆：二叉堆 `datastructure.heap.BinaryHeap`
