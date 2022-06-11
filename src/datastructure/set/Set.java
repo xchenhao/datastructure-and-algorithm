@@ -13,7 +13,7 @@ public interface Set<E> {
 
     void remove(E element);
 
-    void traversal(Visitor visitor);
+    void traversal(Visitor<E> visitor);
 
     public static abstract class Visitor<E> {
         boolean stop;
