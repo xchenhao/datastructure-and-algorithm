@@ -50,3 +50,4 @@
   + `datastructure.map.TreeSet`
 - 哈希表：`datastructure.hashmap.HashMap`、`datastructure.hashmap.LinkedHashMap`
 - 堆：二叉堆 `datastructure.heap.BinaryHeap`
+- 优先级队列：`datastructure.heap.PriorityQueue`
