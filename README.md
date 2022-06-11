@@ -2,6 +2,7 @@
 
 >参考
 >
+>https://ke.qq.com/course/385223
 >https://github.com/rogertan30/Love-Leetcode
 >https://github.com/szluyu99/Data_Structure_Note
 >https://blog.csdn.net/weixin_43734095/article/details/104847976
@@ -37,7 +38,14 @@
 - 树形结构
   + 二叉树：完全二叉树、满二叉树
     + 二叉搜索树：`datastructure.tree.BinarySearchTree`
-      + 平衡二叉搜索树
-        * AVL 树
-        * 红黑树（平衡二叉 B 树）
+      + 平衡二叉搜索树：`datastructure.tree.BalancedBinarySearchTree`
+        * AVL 树：`datastructure.tree.AVLTree`
+        * 红黑树（平衡二叉 B 树）：`datastructure.tree.RedBlackTree`
   + 多叉树：B 树
+- 集合：`datastructure.tree.Set`
+  + `datastructure.set.ListSet`
+  + `datastructure.set.TreeSet`
+- 映射：`datastructure.map.Map`
+  + `datastructure.map.TreeMap`
+  + `datastructure.map.TreeSet`
+- 哈希表：`datastructure.hashmap.HashMap`、`datastructure.hashmap.LinkedHashMap`
