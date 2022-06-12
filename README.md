@@ -40,7 +40,7 @@
     + 二叉搜索树：`datastructure.tree.BinarySearchTree`
       + 平衡二叉搜索树：`datastructure.tree.BalancedBinarySearchTree`
         * AVL 树：`datastructure.tree.AVLTree`
-        * 红黑树（平衡二叉 B 树）：`datastructure.tree.RedBlackTree`
+        * 红黑树（平衡二叉 B 树，四阶 B 树）：`datastructure.tree.RedBlackTree`
   + 多叉树：B 树
 - 集合：`datastructure.tree.Set`
   + `datastructure.set.ListSet`
@@ -52,4 +52,4 @@
 - 堆：二叉堆 `datastructure.heap.BinaryHeap`
 - 优先级队列：`datastructure.heap.PriorityQueue`
 - 哈夫曼树（了解）
-- Trie
+- Trie：`datastructure.trie.Trie`
