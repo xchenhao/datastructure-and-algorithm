@@ -38,6 +38,7 @@
 - 树形结构
   + 二叉树：完全二叉树、满二叉树
     + 二叉搜索树：`datastructure.tree.BinarySearchTree`
+      + 二叉树的非递归遍历：`datastructure.tree.BinarySearchTree2`
       + 平衡二叉搜索树：`datastructure.tree.BalancedBinarySearchTree`
         * AVL 树：`datastructure.tree.AVLTree`
         * 红黑树（平衡二叉 B 树，四阶 B 树）：`datastructure.tree.RedBlackTree`
